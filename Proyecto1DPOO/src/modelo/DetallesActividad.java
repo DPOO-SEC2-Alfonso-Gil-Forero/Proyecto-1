@@ -2,7 +2,8 @@ package modelo;
 
 import java.util.List;
 
-public class DetallesActividad {
+public class DetallesActividad 
+{
 
 	
 	

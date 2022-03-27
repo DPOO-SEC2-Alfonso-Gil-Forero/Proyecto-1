@@ -1,8 +1,8 @@
 package modelo;
 
-public class Dueno {
+public class Dueno extends Participante
+{
 
-	
 	
 	
 	

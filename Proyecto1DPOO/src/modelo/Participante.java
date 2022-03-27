@@ -2,22 +2,23 @@ package modelo;
 
 import java.util.List;
 
-public class Participante {
+public class Participante 
+{
 
 	
 	
 	
 	//Atributos
 	
-	private String nombre;
+	protected String nombre;
 
-	private String correo;
+	protected String correo;
 
-	private String tipo;
+	protected String tipo;
 
-	private List<Actividad> actividades;
+	protected List<Actividad> actividades;
 		
-	private Reporte reporte;
+	protected Reporte reporte;
 	
 	
 	//Constructor

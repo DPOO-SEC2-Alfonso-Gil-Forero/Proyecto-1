@@ -2,7 +2,8 @@ package modelo;
 
 import java.util.List;
 
-public class Reporte {
+public class Reporte 
+{
 
 	
 	

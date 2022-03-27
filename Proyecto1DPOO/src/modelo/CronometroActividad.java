@@ -1,6 +1,7 @@
 package modelo;
 
-public class CronometroActividad {
+public class CronometroActividad 
+{
 
 	
 	

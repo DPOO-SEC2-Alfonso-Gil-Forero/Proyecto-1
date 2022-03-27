@@ -1,6 +1,7 @@
 package modelo;
 
-public class Actividad {
+public class Actividad 
+{
 
 	
 	
