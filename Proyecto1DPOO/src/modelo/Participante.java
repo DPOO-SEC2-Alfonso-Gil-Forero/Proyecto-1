@@ -25,7 +25,7 @@ public class Participante
 	
 	
 	/**
-	 * indica si es dueño del proyecto o un participante normal
+	 * indica si es dueï¿½o del proyecto o un participante normal
 	 */
 	protected String tipo;
 	
@@ -43,9 +43,9 @@ public class Participante
 	
 	/**
 	 * reporte de las actividades de cada miembro del
-	 * equipo incluyendo información como: tiempo total
+	 * equipo incluyendo informaciï¿½n como: tiempo total
 	 * invertido, tiempo promedio por tipo de actividad,
-	 * tiempo por cada día.
+	 * tiempo por cada dï¿½a.
 	 */
 	protected Reporte reporte;
 	
@@ -60,7 +60,7 @@ public class Participante
 	 * 
 	 * @param elNombre = Nombre participante
 	 * @param elCorreo = Correo del participante
-	 * @param elTipo = indica si es dueño del proyecto o participante normal
+	 * @param elTipo = indica si es dueï¿½o del proyecto o participante normal
 	 */
 	public Participante(String elNombre, String elCorreo, String elTipo) 
 	{
@@ -90,7 +90,7 @@ public class Participante
 		return correo;
 	}
 	/**
-	 * constulta si el participante es dueño del proyecto o no
+	 * constulta si el participante es dueï¿½o del proyecto o no
 	 * @return tipo
 	 */
 	public String darTipo()
