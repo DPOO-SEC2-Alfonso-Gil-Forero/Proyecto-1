@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class Proyecto 
 {
@@ -29,7 +30,7 @@ public class Proyecto
 	public Proyecto(String nombre, String descripcion, String fechai, String fechaf, Dueno dueno,List<String> tiposActividad ){
 		this.dueno=dueno;
 		this.detalles=new DetallesProyecto(nombre, descripcion, fechai, fechaf, tiposActividad);
-		this.reporte=new Reporte(dueno.nombre); 
+		//this.reporte=new Reporte(dueno.nombre); 
 		
 	}
 	//Métodos
@@ -63,6 +64,10 @@ public class Proyecto
 	public Participante obpar(String nombrepar) {
 		Participante par=this.participantes.get(nombrepar);
 		return par;
+	}
+	public Set<String> obparticipantes() {
+		Set<String> participantes=this.participantes.keySet();
+		return participantes;
 	}
 	public void addActividad(Actividad actividad) {
 		this.actividades.add(actividad);		

@@ -213,7 +213,7 @@ public class ConsolaProyecto {
 		String duenio=input("ingrese el nombre del dueño del proyecto");
 		String tipos=input("ingrese los tipoos de actividades separadas por comas");
 		String[] tiposA=tipos.split(",");
-		List<String> tiposAc=null;
+		List<String> tiposAc=new ArrayList();
 		for (String a:tiposA) {
 			tiposAc.add(a);
 		}
@@ -221,9 +221,14 @@ public class ConsolaProyecto {
 		guardarInfo();
 		
 	}
-	public void ejecutarMostrarProyecto() throws IOException {
+	public void ejecutarMostrarProyecto(){
 		String nombre=input("ingrese la direccion del proyecto que desea que se muestre");
-		proyecto.mostrarProyecto(nombre);
+		try {
+			proyecto.mostrarProyecto(nombre);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("no se encontro el proyecto");
+		}
 	}
     public void guardarInfo() throws IOException {
     	String ruta=input("ingrese la ruta del proyecto");
