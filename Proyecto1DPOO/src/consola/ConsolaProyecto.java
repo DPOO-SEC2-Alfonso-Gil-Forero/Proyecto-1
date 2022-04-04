@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Actividad;
+import modelo.Proyecto;
 
 public class ConsolaProyecto {
 	
-	
+	private Proyecto proyecto;
 
 	public void ejecutarAplicacion()
 	{
@@ -201,7 +202,22 @@ public class ConsolaProyecto {
 		
 		
 	}
-
+	public void ejecutarCrearProyecto() {
+		
+		String nombre=input("ingrese el nombre del nuevo proyecto");
+		String descripcion=input("ingrese la descripcion del nuevo proyecto");
+		String fechai=input("ingrese la fecha de inicio del proyecto");
+		String fechaf=input("ingrese la fecha estimada de finalizacion del proyecto");
+		String duenio=input("ingrese el nombre del dueño del proyecto");
+		
+	}
+	public void ejecutarMostrarProyecto() throws IOException {
+		String nombre=input("ingrese la direccion del proyecto que desea que se muestre");
+		proyecto.mostrarProyecto(nombre);
+	}
+    public void guardarInfo() {
+    	
+    }
 
 
 	
