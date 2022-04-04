@@ -240,7 +240,7 @@ public class ConsolaProyecto {
 		for (String llave : participantes.keySet()) 
 		{
 		    Participante participante = participantes.get(llave);
-		    informe += "\n"+participante.getReporte().mostrarReporteMiembro();
+		    informe += "\n"+participante.darReporte().mostrarReporteMiembro();
 		}
 		
 		System.out.println(informe);
