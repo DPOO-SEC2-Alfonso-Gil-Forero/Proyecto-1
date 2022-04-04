@@ -30,12 +30,7 @@ public class Participante
 	protected String tipo;
 	
 	
-	/**
-	 * una lista con los participantes de proyecto
-	 */
-	protected List<Participante> participantes;
 		
-	
 	/**
 	 * una lista con las actividades de cada participante
 	 */
@@ -49,6 +44,7 @@ public class Participante
 	 */
 	protected Reporte reporte;
 	
+	private String proyecto;
 	// ************************************************************************
 	// Constructores
 	// ************************************************************************
@@ -62,12 +58,19 @@ public class Participante
 	 * @param elCorreo = Correo del participante
 	 * @param elTipo = indica si es due�o del proyecto o participante normal
 	 */
-	public Participante(String elNombre, String elCorreo, String elTipo) 
+	public Participante(String elNombre, String elCorreo, String elTipo, String elProyecto, List listaProyectos) 
 	{
 		this.nombre = elNombre;
 		this.correo = elCorreo;
 		this.tipo = elTipo;
-		this.participantes = new ArrayList<>();
+		if (listaProyectos.contains(elProyecto))
+			this.proyecto = elProyecto;
+		else 
+		{
+			listaProyectos.add(elProyecto);
+			this.proyecto = elProyecto;
+		}
+		
 	}
 
 	// ************************************************************************
@@ -90,7 +93,7 @@ public class Participante
 		return correo;
 	}
 	/**
-	 * constulta si el participante es due�o del proyecto o no
+	 * constulta si el participante es dueno del proyecto o no
 	 * @return tipo
 	 */
 	public String darTipo()
