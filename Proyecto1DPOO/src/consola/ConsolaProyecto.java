@@ -1,13 +1,18 @@
 package consola;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import modelo.Actividad;
+import modelo.Participante;
+import modelo.Reporte;
 
 public class ConsolaProyecto {
 	
@@ -50,6 +55,10 @@ public class ConsolaProyecto {
 				}
 				else if (opcion_seleccionada == 7)
 				{
+					ejecutarGenerarInforme();
+				}
+				else if (opcion_seleccionada == 8)
+				{
 					System.out.println("Saliendo de la aplicación ...");
 					continuar = false;
 				}
@@ -83,7 +92,8 @@ public class ConsolaProyecto {
 		System.out.println("4. Modificar datos participante");
 		System.out.println("5. Registrar actividad");
 		System.out.println("6. Mostrar reporte de un participante");
-		System.out.println("7. Salir de la aplicación\n");
+		System.out.println("7. Generar documento con toda la información del proyecto");
+		System.out.println("8. Salir de la aplicación\n");
 		
 	}
 	
@@ -116,12 +126,16 @@ public class ConsolaProyecto {
 	public void ejecutarAgregarActividad()
 	{
 		Actividad actividad = new Actividad();
-		String participante = input("Ingrese su usuario o el de aquel que realizó la actividad: ");
+		String participanteNombre = input("Ingrese su usuario o el de aquel que realizó la actividad: ");
 		String titulo = input("Ingrese el título de la actividad: ");
 		String descripcion = input("Ingrese una breve descripción de la actividad: ");
+		//Participante participante = proyecto.obpar(participanteNombre);	
+		//Reporte reporte = participante.darReporte();	
+		//CronometroActividad cronometro = reporte.darCronometro();	
 		System.out.println("\nDe los siguientes tipos, escriba el tipo de la actividad: ");
+		//List<String> lista = proyecto.detalles.darTipos();
 		List<String> lista = new ArrayList<String>();
-	    for (String tipoL : lista) 
+		for (String tipoL : lista) 
 	    {
 	    	System.out.println("\n"+tipoL);
 	    }
@@ -139,9 +153,8 @@ public class ConsolaProyecto {
 				System.out.println("\nTipo no valido");
 			}
 		}
-		actividad.guardarInfoActividad(titulo, descripcion, tipo, participante);
+		actividad.guardarInfoActividad(titulo, descripcion, tipo, participanteNombre);
 		System.out.println("\nDesea empezar a cronómetrar la actividad o esta ya fue terminada previamente:\n");
-		//CronometroActividad cronometro = proyecto.darParticipante("nombre").darReporte().darCronometro();	
 		boolean cont2 = true;
 	    while (cont2)
 		{
@@ -156,7 +169,7 @@ public class ConsolaProyecto {
 					if (opcionCrono2.equals("a"))
 					{
 						//cronometro.pausarCronoActividad()
-						String d = input("Escriba cualquier tecla para reanudar el conteo del tiempo\n");
+						input("Escriba cualquier tecla para reanudar el conteo del tiempo\n");
 						//cronometro.reanudarCronoActividad()
 					}
 					else if (opcionCrono2.equals("b"))
@@ -187,6 +200,8 @@ public class ConsolaProyecto {
 				System.out.println("\nOpción no válida");
 			}
 		}
+	    //reporte.registrarInfoReporte(actividad);
+	    //proyecto.addActividad(actividad);
 	    System.out.println("\nLa actividad fue agregada");
 		
 	}
@@ -198,8 +213,53 @@ public class ConsolaProyecto {
 	
 	private void ejecutarMostrarReporte() 
 	{
+		String participante = input("Ingrese el usuario del que quiere obtener su reporte: ");
+		//Reporte reporte = proyecto.obpar(participante).darReporte();	
+		//System.out.println(reporte.mostrarReporteMiembro());
+		
+	}
+	
+	
+	private void ejecutarGenerarInforme() 
+	{
+		try 
+		{
+			File file = new File("proyecto.txt");
+		 }
+		catch (IOException e) 
+		{
+			System.out.println("Ocurrio un error, intente de nuevo.");
+		    e.printStackTrace();
+		}
+		String informe = "";
+		
+		informe += "Nombre Proyecto: "+proyecto.getDetalles().getNombre();
+		informe += "\nDescripción\n: "+proyecto.getDetalles().getDescripcion();
+		informe += "\nFecha inicio: "+proyecto.getDetalles().getFechaI();
+		informe += "\nFecha finalización estimada: "+proyecto.getDetalles().getFechaF();
+		
+
+		informe += "\nParticipantes: ";
+		
+		Map<String, Participante> participantes = proyecto.getParticipantes();
+		for (String llave : participantes.keySet()) 
+		{
+		    Participante participante = participantes.get(llave);
+		    informe += "\n"+participante.getReporte().mostrarReporteMiembro();
+		}
 		
 		
+		try 
+		{
+			FileWriter myWriter = new FileWriter("proyecto.txt");
+		    myWriter.write(informe);
+		    myWriter.close();
+		 } 
+		catch (IOException e) 
+		{
+			System.out.println("Ocurrió un error.");
+		    e.printStackTrace();
+		}
 	}
 
 
