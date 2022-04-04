@@ -17,13 +17,15 @@ import modelo.Participante;
 import modelo.Reporte;
 import modelo.DetallesProyecto;
 import modelo.Dueno;
+import modelo.Participante;
 import modelo.Proyecto;
 
 public class ConsolaProyecto {
 	
 	private Proyecto proyecto;
+	public Map<String, Object> hashParticipantes;
 
-	public void ejecutarAplicacion() throws IOException
+	public void ejecutarAplicacion() throws IOException, ParseException
 	{
 		System.out.println("Consola Seguimiento Proyecto\n");
 
@@ -44,11 +46,11 @@ public class ConsolaProyecto {
 				}
 				else if (opcion_seleccionada == 3)
 				{
-					
+					crearParticipante();
 				}
 				else if (opcion_seleccionada == 4)
 				{
-					
+					modificarInfoParticipante();
 				}
 				else if (opcion_seleccionada == 5)
 				{
@@ -63,6 +65,10 @@ public class ConsolaProyecto {
 					ejecutarGenerarInforme();
 				}
 				else if (opcion_seleccionada == 8)
+				{
+					mostrarInfoParticipante();
+				}
+				else if (opcion_seleccionada == 9)
 				{
 					System.out.println("Saliendo de la aplicación ...");
 					continuar = false;
@@ -98,7 +104,8 @@ public class ConsolaProyecto {
 		System.out.println("5. Registrar actividad");
 		System.out.println("6. Mostrar reporte de un participante");
 		System.out.println("7. Generar documento con toda la información del proyecto");
-		System.out.println("8. Salir de la aplicación\n");
+		System.out.println("8. Mostrar informacion de un participante");
+		System.out.println("9. Salir de la aplicación\n");
 		
 	}
 	
@@ -112,15 +119,33 @@ public class ConsolaProyecto {
 	
 	
 	
+	public void crearParticipante()
+	{
+
+		String elNombre = input("Ingrese su nombre ");
+		String elCorreo = input("ingrese su correo ");
+		String elTipo = input("si es dueño de un participante normal");
+		Participante participante = new Participante(elNombre, elCorreo, elTipo);
+		hashParticipantes.put(elNombre, participante);
+	}	
 	
+	public void modificarInfoParticipante()
+	{
+		String elNombre = input("Ingrese su nombre ");
+		String elCorreo = input("ingrese su correo ");
+		String elTipo = input("si es dueño de un participante normal");
+		Participante p = (Participante) hashParticipantes.get(elNombre);
+		if (p != null)
+			p.modificarDatos(elNombre, elCorreo, elTipo);
+	}
 	
-	
-	
-	
-	
-	
-	
-	
+	public void mostrarInfoParticipante()
+	{
+		String elNombre = input("Ingrese el nombre del participante a buscar info ");
+		Participante p = (Participante) hashParticipantes.get(elNombre);
+		if (p != null)
+			System.out.println(p.mostrarDatosParticipante());
+	}
 	
 	
 	
@@ -249,8 +274,8 @@ public class ConsolaProyecto {
 	
 	
 	
-	public void ejecutarCrearProyecto() throws IOException {
-		
+	public void ejecutarCrearProyecto()
+	{
 		String nombre=input("ingrese el nombre del nuevo proyecto");
 		String descripcion=input("ingrese la descripcion del nuevo proyecto");
 		String fechai=input("ingrese la fecha de inicio del proyecto");
@@ -263,7 +288,11 @@ public class ConsolaProyecto {
 			tiposAc.add(a);
 		}
 		proyecto= new Proyecto(nombre, descripcion, fechai, fechaf, null, tiposAc);
-		guardarInfo();
+		try {
+			guardarInfo();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	public void ejecutarMostrarProyecto(){
@@ -308,7 +337,7 @@ public class ConsolaProyecto {
 	
 	
 	
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args) throws IOException, ParseException
 	{
 		ConsolaProyecto consola = new ConsolaProyecto();
 		consola.ejecutarAplicacion();

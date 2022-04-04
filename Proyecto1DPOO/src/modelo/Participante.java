@@ -30,12 +30,7 @@ public class Participante
 	protected String tipo;
 	
 	
-	/**
-	 * una lista con los participantes de proyecto
-	 */
-	protected List<Participante> participantes;
 		
-	
 	/**
 	 * una lista con las actividades de cada participante
 	 */
@@ -48,6 +43,7 @@ public class Participante
 	 * tiempo por cada d�a.
 	 */
 	protected Reporte reporte;
+	
 	
 	// ************************************************************************
 	// Constructores
@@ -67,7 +63,8 @@ public class Participante
 		this.nombre = elNombre;
 		this.correo = elCorreo;
 		this.tipo = elTipo;
-		this.participantes = new ArrayList<>();
+		reporte = new Reporte(nombre);
+	
 	}
 
 	// ************************************************************************
@@ -90,12 +87,37 @@ public class Participante
 		return correo;
 	}
 	/**
-	 * constulta si el participante es due�o del proyecto o no
+	 * constulta si el participante es dueno del proyecto o no
 	 * @return tipo
 	 */
 	public String darTipo()
 	{
 		return tipo;
 	}
+	
+	
+	
+	public Reporte darReporte()
+	{
+		return reporte;
+	}
+	
+	public void modificarDatos(String elNombre, String elCorreo, String elTipo)
+	{
+		this.nombre = elNombre;
+		this.correo = elCorreo;
+		this.tipo = elTipo;
+		
+
+	}
+	public String mostrarDatosParticipante()
+	{
+		this.nombre = darNombre();
+		this.correo = darCorreo();
+		this.tipo = darTipo();
+		String r = "nombre: "+this.nombre + "correo: "+ this.correo +"tipo: "+ this.tipo;
+		return r;
+	}
+	
 	
 	}
