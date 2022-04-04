@@ -67,5 +67,8 @@ public class Proyecto
 	public void addActividad(Actividad actividad) {
 		this.actividades.add(actividad);		
 	}
+	public DetallesProyecto getDetalles() {
+		return detalles;
+	}
 	
 }

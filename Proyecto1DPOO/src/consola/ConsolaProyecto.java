@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Actividad;
+import modelo.DetallesProyecto;
+import modelo.Dueno;
 import modelo.Proyecto;
 
 public class ConsolaProyecto {
 	
 	private Proyecto proyecto;
 
-	public void ejecutarAplicacion()
+	public void ejecutarAplicacion() throws IOException
 	{
 		System.out.println("Consola Seguimiento Proyecto\n");
 
@@ -27,11 +29,11 @@ public class ConsolaProyecto {
 				int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción: "));
 				if (opcion_seleccionada == 1)
 				{
-					
+					ejecutarCrearProyecto();
 				}
 				else if (opcion_seleccionada == 2)
 				{
-					
+					ejecutarMostrarProyecto();
 				}
 				else if (opcion_seleccionada == 3)
 				{
@@ -202,21 +204,31 @@ public class ConsolaProyecto {
 		
 		
 	}
-	public void ejecutarCrearProyecto() {
+	public void ejecutarCrearProyecto() throws IOException {
 		
 		String nombre=input("ingrese el nombre del nuevo proyecto");
 		String descripcion=input("ingrese la descripcion del nuevo proyecto");
 		String fechai=input("ingrese la fecha de inicio del proyecto");
 		String fechaf=input("ingrese la fecha estimada de finalizacion del proyecto");
 		String duenio=input("ingrese el nombre del dueño del proyecto");
+		String tipos=input("ingrese los tipoos de actividades separadas por comas");
+		String[] tiposA=tipos.split(",");
+		List<String> tiposAc=null;
+		for (String a:tiposA) {
+			tiposAc.add(a);
+		}
+		proyecto= new Proyecto(nombre, descripcion, fechai, fechaf, null, tiposAc);
+		guardarInfo();
 		
 	}
 	public void ejecutarMostrarProyecto() throws IOException {
 		String nombre=input("ingrese la direccion del proyecto que desea que se muestre");
 		proyecto.mostrarProyecto(nombre);
 	}
-    public void guardarInfo() {
-    	
+    public void guardarInfo() throws IOException {
+    	String ruta=input("ingrese la ruta del proyecto");
+    	DetallesProyecto detalles=proyecto.getDetalles();
+    	detalles.guardarInfo(ruta);
     }
 
 
@@ -246,7 +258,7 @@ public class ConsolaProyecto {
 	
 	
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		ConsolaProyecto consola = new ConsolaProyecto();
 		consola.ejecutarAplicacion();
