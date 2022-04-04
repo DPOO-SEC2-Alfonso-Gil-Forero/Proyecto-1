@@ -6,15 +6,18 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import modelo.Actividad;
 import modelo.DetallesProyecto;
 import modelo.Dueno;
+import modelo.Participante;
 import modelo.Proyecto;
 
 public class ConsolaProyecto {
 	
 	private Proyecto proyecto;
+	public Map<String, Object> hashParticipantes;
 
 	public void ejecutarAplicacion() throws IOException
 	{
@@ -37,11 +40,11 @@ public class ConsolaProyecto {
 				}
 				else if (opcion_seleccionada == 3)
 				{
-					
+					crearParticipante();
 				}
 				else if (opcion_seleccionada == 4)
 				{
-					
+					modificarInfoParticipante();
 				}
 				else if (opcion_seleccionada == 5)
 				{
@@ -52,6 +55,10 @@ public class ConsolaProyecto {
 					ejecutarMostrarReporte();
 				}
 				else if (opcion_seleccionada == 7)
+				{
+					mostrarInfoParticipante();
+				}
+				else if (opcion_seleccionada == 8)
 				{
 					System.out.println("Saliendo de la aplicación ...");
 					continuar = false;
@@ -86,7 +93,8 @@ public class ConsolaProyecto {
 		System.out.println("4. Modificar datos participante");
 		System.out.println("5. Registrar actividad");
 		System.out.println("6. Mostrar reporte de un participante");
-		System.out.println("7. Salir de la aplicación\n");
+		System.out.println("7. Mostrar informacion de un participante");
+		System.out.println("8. Salir de la aplicación\n");
 		
 	}
 	
@@ -100,15 +108,33 @@ public class ConsolaProyecto {
 	
 	
 	
+	public void crearParticipante()
+	{
+
+		String elNombre = input("Ingrese su nombre ");
+		String elCorreo = input("ingrese su correo ");
+		String elTipo = input("si es dueño de un participante normal");
+		Participante participante = new Participante(elNombre, elCorreo, elTipo);
+		hashParticipantes.put(elNombre, participante);
+	}	
 	
+	public void modificarInfoParticipante()
+	{
+		String elNombre = input("Ingrese su nombre ");
+		String elCorreo = input("ingrese su correo ");
+		String elTipo = input("si es dueño de un participante normal");
+		Participante p = (Participante) hashParticipantes.get(elNombre);
+		if (p != null)
+			p.modificarDatos(elNombre, elCorreo, elTipo);
+	}
 	
-	
-	
-	
-	
-	
-	
-	
+	public void mostrarInfoParticipante()
+	{
+		String elNombre = input("Ingrese el nombre del participante a buscar info ");
+		Participante p = (Participante) hashParticipantes.get(elNombre);
+		if (p != null)
+			System.out.println(p.mostrarDatosParticipante());
+	}
 	
 	
 	
@@ -204,7 +230,8 @@ public class ConsolaProyecto {
 		
 		
 	}
-	public void ejecutarCrearProyecto() throws IOException {
+	public void ejecutarCrearProyecto()
+	{
 		
 		String nombre=input("ingrese el nombre del nuevo proyecto");
 		String descripcion=input("ingrese la descripcion del nuevo proyecto");

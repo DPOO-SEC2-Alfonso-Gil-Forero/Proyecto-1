@@ -44,7 +44,7 @@ public class Participante
 	 */
 	protected Reporte reporte;
 	
-	private String proyecto;
+	
 	// ************************************************************************
 	// Constructores
 	// ************************************************************************
@@ -58,19 +58,12 @@ public class Participante
 	 * @param elCorreo = Correo del participante
 	 * @param elTipo = indica si es due�o del proyecto o participante normal
 	 */
-	public Participante(String elNombre, String elCorreo, String elTipo, String elProyecto, List listaProyectos) 
+	public Participante(String elNombre, String elCorreo, String elTipo) 
 	{
 		this.nombre = elNombre;
 		this.correo = elCorreo;
 		this.tipo = elTipo;
-		if (listaProyectos.contains(elProyecto))
-			this.proyecto = elProyecto;
-		else 
-		{
-			listaProyectos.add(elProyecto);
-			this.proyecto = elProyecto;
-		}
-		
+	
 	}
 
 	// ************************************************************************
@@ -100,5 +93,23 @@ public class Participante
 	{
 		return tipo;
 	}
+	
+	public void modificarDatos(String elNombre, String elCorreo, String elTipo)
+	{
+		this.nombre = elNombre;
+		this.correo = elCorreo;
+		this.tipo = elTipo;
+		
+
+	}
+	public String mostrarDatosParticipante()
+	{
+		this.nombre = darNombre();
+		this.correo = darCorreo();
+		this.tipo = darTipo();
+		String r = "nombre: "+this.nombre + "correo: "+ this.correo +"tipo: "+ this.tipo;
+		return r;
+	}
+	
 	
 	}
