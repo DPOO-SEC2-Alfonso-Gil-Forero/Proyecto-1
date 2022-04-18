@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -20,17 +21,14 @@ public class Proyecto
 	
 	private List<Actividad> actividades;
 	
-	private Dueno dueno;
-	
 	private DetallesProyecto detalles;
 	
-	private Reporte reporte;
 
 	//Constructor
-	public Proyecto(String nombre, String descripcion, String fechai, String fechaf, Dueno dueno,List<String> tiposActividad ){
-		this.dueno=dueno;
-		this.detalles=new DetallesProyecto(nombre, descripcion, fechai, fechaf, tiposActividad);
-		//this.reporte=new Reporte(dueno.nombre); 
+	public Proyecto(String nombre, String descripcion, String fechai, String fechaf, String nombreDueno,List<String> tiposActividad ){
+		this.detalles=new DetallesProyecto(nombre, descripcion, fechai, fechaf, tiposActividad, nombreDueno);
+		this.participantes = new HashMap<String,Participante>();
+		this.actividades = new ArrayList<Actividad>();
 		
 	}
 	//Métodos

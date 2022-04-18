@@ -1,0 +1,57 @@
+Nombre Proyecto: ProyectoPrueba
+Descripción: 
+Es un ensayo
+Fecha inicio: 01/01/2021
+Fecha finalización estimada: 01/01/2022
+Participantes: 
+Nombre Participante: Emily
+
+Titulo actividad: Act1
+Descripción: 
+Es una prueba 1
+Tipo: logica
+Fecha: 12/04/2022
+Hora Inicio : 16:06:50
+Hora Final : 16:06:57
+
+Tiempo total: 7318.0 ms
+Tiempo promedio por tipo de actividad: 
+logica : 7318 ms
+Tiempo por día: 
+12/04/2022 : 7318 ms
+
+Nombre Participante: Santiago
+
+Titulo actividad: Prueba2
+Descripción: 
+Es una rueba datos manual tiempo
+Tipo: revision
+Fecha: 11/04/2022
+Hora Inicio : 05:00:00
+Hora Final : 05:15:00
+
+
+Titulo actividad: Prueba3
+Descripción: 
+Prueba con cronometro 2
+Tipo: diseno
+Fecha: 12/04/2022
+Hora Inicio : 16:08:14
+Hora Final : 16:09:26
+
+
+Titulo actividad: Prueba4
+Descripción: 
+Prueba calculo promedio
+Tipo: revision
+Fecha: 12/04/2022
+Hora Inicio : 10:00:00
+Hora Final : 10:30:00
+
+Tiempo total: 2714782.0 ms
+Tiempo promedio por tipo de actividad: 
+diseno : 14782 ms
+revision : 1350000 ms
+Tiempo por día: 
+12/04/2022 : 1814782 ms
+11/04/2022 : 900000 ms

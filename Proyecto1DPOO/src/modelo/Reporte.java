@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ public class Reporte
 		cronometro = new CronometroActividad();
 		nombreParticipante = PnombreParticipante;
 		reporteStr = "Nombre Participante: "+nombreParticipante+"\n";
+		actividades = new ArrayList<Actividad>();
 	}
 	
 	//Métodos
@@ -45,9 +47,9 @@ public class Reporte
 	
 	public String mostrarReporteMiembro()
 	{
-		reporteStr += "Tiempo total: " + cronometro.darTiempoTotal();
+		String reporteTemp = reporteStr + "Tiempo total: " + cronometro.darTiempoTotal()+" ms";
 		Map<String, List<Long>> tiempoProm = cronometro.darTiempoProm();
-		reporteStr += "\nTiempo promedio por tipo de actividad: \n";
+		reporteTemp += "\nTiempo promedio por tipo de actividad: \n";
 		for (String llave : tiempoProm.keySet()) 
 		{
 			Long promedio = 0L;
@@ -57,16 +59,16 @@ public class Reporte
 		        promedio += tiempo;
 		    }
 		    String prom = Long.toString(promedio / lista.size());
-		    reporteStr += llave+" : "+prom+" ms\n";
+		    reporteTemp += llave+" : "+prom+" ms\n";
 		}
-		reporteStr += "Tiempo por día: \n";
+		reporteTemp += "Tiempo por día: \n";
 		Map<String, Long> tiempoPorDia = cronometro.darTiempoPorDia();
 		for (String llave : tiempoPorDia.keySet()) 
 		{
 			Long tiempo = tiempoPorDia.get(llave);
-		    reporteStr += llave+" : "+tiempo+" ms\n";
+			reporteTemp += llave+" : "+tiempo+" ms\n";
 		}
-		return reporteStr;
+		return reporteTemp;
 	}
 	
 	public CronometroActividad darCronometro()

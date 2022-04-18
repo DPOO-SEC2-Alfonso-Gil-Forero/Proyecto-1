@@ -1,0 +1,28 @@
+Nombre Proyecto: NuevoProy
+Descripción: 
+Esta es una prueba
+Dueño: 
+Santiago
+Fecha inicio: 01/01/2021
+Fecha finalización estimada: 01/02/2022
+Participantes: 
+Nombre Participante: Santiago
+
+Titulo actividad: Act1
+Descripción: 
+Es una actividad de prueba
+Tipo: diseno
+Fecha: 12/04/2022
+Hora Inicio : 16:27:31
+Hora Final : 16:27:33
+
+Tiempo total: 2735.0 ms
+Tiempo promedio por tipo de actividad: 
+diseno : 2735 ms
+Tiempo por día: 
+12/04/2022 : 2735 ms
+
+Nombre Participante: Sergio
+Tiempo total: 0.0 ms
+Tiempo promedio por tipo de actividad: 
+Tiempo por día: 

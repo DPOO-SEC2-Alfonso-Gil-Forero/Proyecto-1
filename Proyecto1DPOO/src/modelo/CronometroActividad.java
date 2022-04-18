@@ -63,7 +63,7 @@ public class CronometroActividad
 	
 	public void  pausarCronoActividad()
 	{
-		acarreo += momento1.getTime() - Calendar.getInstance().getTime().getTime();
+		acarreo += Calendar.getInstance().getTime().getTime() - momento1.getTime();
 	}
 	
 	
@@ -77,7 +77,7 @@ public class CronometroActividad
 	{
 		momento2 = Calendar.getInstance().getTime();
 		actividad.agregarHoraF(horaFormato.format(momento2));
-		acarreo += momento1.getTime() - Calendar.getInstance().getTime().getTime();
+		acarreo += Calendar.getInstance().getTime().getTime() - momento1.getTime();
 		actualizarTiempo(actividad);
 		
 	}
@@ -88,7 +88,7 @@ public class CronometroActividad
 	{
 		momento1 = fechaHoraFormato.parse(fecha+"-"+horaI);
 		momento2 = fechaHoraFormato.parse(fecha+"-"+horaF);
-		acarreo = momento1.getTime() - momento2.getTime();
+		acarreo = momento2.getTime() - momento1.getTime();
 		actualizarTiempo(actividad);
 	}
 

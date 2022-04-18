@@ -1,10 +1,12 @@
 package consola;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.RandomAccessFile;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,8 +18,6 @@ import modelo.CronometroActividad;
 import modelo.Participante;
 import modelo.Reporte;
 import modelo.DetallesProyecto;
-import modelo.Dueno;
-import modelo.Participante;
 import modelo.Proyecto;
 
 public class ConsolaProyecto {
@@ -97,7 +97,7 @@ public class ConsolaProyecto {
 	public void mostrarMenu()
 	{
 		System.out.println("\nOpciones de la aplicación\n");
-		System.out.println("1. Guardar información nuevo Proyecto");
+		System.out.println("1. Crear proyecto");
 		System.out.println("2. Mostrar información de proyecto");
 		System.out.println("3. Agregar participante");
 		System.out.println("4. Modificar datos participante");
@@ -126,7 +126,7 @@ public class ConsolaProyecto {
 		String elCorreo = input("ingrese su correo ");
 		String elTipo = input("si es dueño de un participante normal");
 		Participante participante = new Participante(elNombre, elCorreo, elTipo);
-		hashParticipantes.put(elNombre, participante);
+		proyecto.addPart(elNombre, participante);
 	}	
 	
 	public void modificarInfoParticipante()
@@ -134,7 +134,7 @@ public class ConsolaProyecto {
 		String elNombre = input("Ingrese su nombre ");
 		String elCorreo = input("ingrese su correo ");
 		String elTipo = input("si es dueño de un participante normal");
-		Participante p = (Participante) hashParticipantes.get(elNombre);
+		Participante p = proyecto.obpar(elNombre);
 		if (p != null)
 			p.modificarDatos(elNombre, elCorreo, elTipo);
 	}
@@ -142,7 +142,7 @@ public class ConsolaProyecto {
 	public void mostrarInfoParticipante()
 	{
 		String elNombre = input("Ingrese el nombre del participante a buscar info ");
-		Participante p = (Participante) hashParticipantes.get(elNombre);
+		Participante p = proyecto.obpar(elNombre);
 		if (p != null)
 			System.out.println(p.mostrarDatosParticipante());
 	}
@@ -249,12 +249,13 @@ public class ConsolaProyecto {
 	}
 	
 	
-	private void ejecutarGenerarInforme() 
+	private void ejecutarGenerarInforme() throws IOException 
 	{
 		String informe = "";
 		
 		informe += "Nombre Proyecto: "+proyecto.getDetalles().darNombre();
-		informe += "\nDescripción\n: "+proyecto.getDetalles().darDescripcion();
+		informe += "\nDescripción: \n"+proyecto.getDetalles().darDescripcion();
+		informe += "\nDueño: \n"+proyecto.getDetalles().darDueno();
 		informe += "\nFecha inicio: "+proyecto.getDetalles().darFechaI();
 		informe += "\nFecha finalización estimada: "+proyecto.getDetalles().darFechaF();
 		
@@ -270,6 +271,24 @@ public class ConsolaProyecto {
 		
 		System.out.println(informe);
 		
+		String nombre = proyecto.getDetalles().darNombre()+".txt";
+		File file = new File(nombre);
+		if(file.createNewFile()) 
+		{
+			System.out.println("Se creó el documento: " + file.getName());
+			BufferedWriter writer = new BufferedWriter(new FileWriter(nombre));
+			writer.write(informe);
+			writer.close();
+		}
+		else
+		{
+			System.out.println("El documento se actualizó");
+			RandomAccessFile archivo = new RandomAccessFile(nombre, "rw");
+			archivo.seek(0);
+			archivo.writeBytes(informe);
+			archivo.close();
+		}	
+		
 	}
 	
 	
@@ -283,11 +302,11 @@ public class ConsolaProyecto {
 		String duenio=input("ingrese el nombre del dueño del proyecto");
 		String tipos=input("ingrese los tipoos de actividades separadas por comas");
 		String[] tiposA=tipos.split(",");
-		List<String> tiposAc=new ArrayList();
+		List<String> tiposAc=new ArrayList<String>();
 		for (String a:tiposA) {
 			tiposAc.add(a);
 		}
-		proyecto= new Proyecto(nombre, descripcion, fechai, fechaf, null, tiposAc);
+		proyecto= new Proyecto(nombre, descripcion, fechai, fechaf, duenio, tiposAc);
 		try {
 			guardarInfo();
 		} catch (IOException e) {

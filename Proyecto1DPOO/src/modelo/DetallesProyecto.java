@@ -22,18 +22,21 @@ public class DetallesProyecto
 	private String fechaI;
 
 	private String fechaF;
+	
+	private String dueno;
 
 	private List<String> tiposActividad;
 
 
 
 	//Constructor
-	public DetallesProyecto(String nombre, String descripcion, String fechai, String fechaf,List<String> tiposActividad ){
+	public DetallesProyecto(String nombre, String descripcion, String fechai, String fechaf,List<String> tiposActividad, String nombreDueno ){
 		this.nombre=nombre;
 		this.descripcion=descripcion;
 		this.fechaI=fechai;
 		this.fechaF=fechaf;
 		this.tiposActividad=tiposActividad;
+		dueno = nombreDueno;
 	}
 
 	//Métodos
@@ -62,7 +65,10 @@ public class DetallesProyecto
 		return fechaF;
 	}
 	
-	
+	public String darDueno()
+	{
+		return dueno;
+	}
 	
 	public void setFechaF(String FechaF) {
 		this.fechaF=FechaF;
