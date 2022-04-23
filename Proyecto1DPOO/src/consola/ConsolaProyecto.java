@@ -356,9 +356,9 @@ public class ConsolaProyecto {
 	
 	
 	
-	public static void main(String[] args) throws IOException, ParseException
-	{
-		ConsolaProyecto consola = new ConsolaProyecto();
-		consola.ejecutarAplicacion();
-	}
+	//public static void main(String[] args) throws IOException, ParseException
+	//{
+	//	ConsolaProyecto consola = new ConsolaProyecto();
+	//	consola.ejecutarAplicacion();
+	//}
 }
