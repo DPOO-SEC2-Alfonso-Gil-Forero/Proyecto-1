@@ -51,8 +51,6 @@ public class VentanaPrincipal extends JFrame
     {
     	panelMenu = new PanelMenu(this,proyecto);
     	panelMenu.setPreferredSize(new Dimension(300,700));
-    	Container contentPane = this.getContentPane();
-    	contentPane.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
         add(panelMenu);
     }
     
@@ -124,7 +122,7 @@ public class VentanaPrincipal extends JFrame
 
     public void borrarMenu()
     {
-    	this.remove(panelMenu);
+    	this.remove(panelMenu);    
     }
     
     
