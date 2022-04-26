@@ -1,7 +1,9 @@
 package interfaz;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,11 +11,13 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import modelo.Actividad;
@@ -77,14 +81,29 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 		
 		
 	    setBorder( new TitledBorder( "Menú Principal" ) );
+	    setBackground(new Color(203, 203, 203));
 	    
-	    txtEncabezado = new JLabel("Para registrar la actividad correctamente, por favor llene todos los campos a continuación");
+	    txtEncabezado = new JLabel("<html><div style='text-align: center;'>Para registrar la actividad correctamente, por favor llene todos los campos a continuación</div><html>");
+	    txtEncabezado.setFont(new Font("Calibri", Font.BOLD, 20));
+	    txtEncabezado.setVerticalAlignment(JLabel.CENTER);
+	    txtEncabezado.setHorizontalAlignment(JLabel.CENTER);
+	    txtEncabezado.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
+    	txtEncabezado.setPreferredSize(new Dimension(700,100));
+	    txtEncabezado.setSize(getPreferredSize());
+	    txtEncabezado.setOpaque(true);
+	    txtEncabezado.setBackground(new Color(180, 180, 180));
 	    add(txtEncabezado, BorderLayout.NORTH);
 	    
 	    PanelRegistrarInfo = new JPanel();
+	    PanelRegistrarInfo.setBackground(new Color(203, 203, 203));
 	    PanelRegInfoI = new JPanel();
 	    PanelRegInfoD = new JPanel();
-	    PanelRegistrarInfo.setLayout(new GridLayout(1,2));
+	    
+
+	    GridLayout layout1 = new GridLayout(1,2);
+	    layout1.setHgap(50);
+	    layout1.setVgap(50);
+	    PanelRegistrarInfo.setLayout(layout1);
 
 	    crearPanelIzquierdo();
 	    
@@ -104,13 +123,18 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	
 	private void crearPanelIzquierdo()
 	{
+
+	    PanelRegInfoI.setBackground(new Color(203, 203, 203));
 		txtUsuario = new JLabel("Ingrese su usuario o el de aquel que hizo la actividad: ");
 	    txtTitulo = new JLabel("Ingrese el título de la actividad: ");
 		txtDescripcion = new JLabel("Ingrese una breve descripción: ");
 		
 		fldUsuario = new JTextField();
+		fldUsuario.setBorder(new LineBorder(Color.BLACK, 2, true));
 		fldTitulo = new JTextField();
+		fldTitulo.setBorder(new LineBorder(Color.BLACK, 2, true));
 		fldDescripcion = new JTextField();
+		fldDescripcion.setBorder(new LineBorder(Color.BLACK, 2, true));
 
 		PanelRegInfoI.setLayout(new GridLayout(6,1));
 		PanelRegInfoI.add(txtUsuario);
@@ -125,9 +149,15 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	
 	private void crearPanelDerecho()
 	{
+		
+
+	    PanelRegInfoD.setBackground(new Color(203, 203, 203));
 		PanelTipos = new JPanel();
 		PanelCrono = new JPanel();
 		PanelRegCrono = new JPanel();
+		PanelTipos.setBackground(new Color(203, 203, 203));
+		PanelCrono.setBackground(new Color(203, 203, 203));
+		PanelRegCrono.setBackground(new Color(203, 203, 203));
 		
 		//List<String> lista = proyecto.getDetalles().darTiposs();
 		List<String> lista = new ArrayList<String>();
@@ -137,7 +167,10 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 		
 
 		PanelRegInfoI.setLayout(new GridLayout(6,1));
-		PanelTipos.setLayout(new GridLayout(((lista.size()+3)/2),2));
+		GridLayout layout2 = new GridLayout(((lista.size()+3)/2),2);
+	    layout2.setHgap(15);
+	    layout2.setVgap(15);
+		PanelTipos.setLayout(layout2);
 		PanelTipos.add(new JLabel("Elija uno de estos tipos: "));
 		PanelTipos.add(new JLabel(""));
 		for (String tipoL : lista) 
@@ -145,18 +178,31 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 			JButton btnTipo = new JButton(tipoL);
 			btnTipo.addActionListener(this);
 			btnTipo.setActionCommand(tipoL);
+			btnTipo.setBackground(new Color(166, 166, 166));
+			btnTipo.setBorder(new LineBorder(Color.BLACK, 2, true));
 			PanelTipos.add(btnTipo);
 	    }
-		
-		
-		PanelCrono.setLayout(new GridLayout(3,1));
+
+
+		GridLayout layout7 = new GridLayout(3,1);
+	    layout7.setHgap(15);
+	    layout7.setVgap(15);
+		PanelCrono.setLayout(layout7);
 		PanelCrono.add(new JLabel("<html>¿Desea empezar a cronometrar la actividad o esta ya fue terminada previamente?<html>"));
 		
 		
 		PanelBtnCrono = new JPanel();
-		PanelBtnCrono.setLayout(new GridLayout(1,2));
+		PanelBtnCrono.setBackground(new Color(203, 203, 203));
+		GridLayout layout3 = new GridLayout(1,2);
+	    layout3.setHgap(15);
+	    layout3.setVgap(15);
+		PanelBtnCrono.setLayout(layout3);
 		btnCronoAuto = new JButton("Cronometrar");
+		btnCronoAuto.setBackground(new Color(166, 166, 166));
+		btnCronoAuto.setBorder(new LineBorder(Color.BLACK, 2, true));
 		btnCronoManual = new JButton("Registrar manualmente");
+		btnCronoManual.setBackground(new Color(166, 166, 166));
+		btnCronoManual.setBorder(new LineBorder(Color.BLACK, 2, true));
 		
 		btnCronoAuto.addActionListener(this);
 		btnCronoManual.addActionListener(this);
@@ -171,31 +217,48 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 		
 		
 		PanelRegCrono = new JPanel();
+		PanelRegCrono.setBackground(new Color(203, 203, 203));
 		btnPausa = new JButton("Pausar");
+		btnPausa.setBackground(new Color(166, 166, 166));
+		btnPausa.setBorder(new LineBorder(Color.BLACK, 2, true));
 		btnPausa.addActionListener(this);
 		btnPausa.setActionCommand("PAUSAR");
 
 		btnReanudar = new JButton("Reanudar");
+		btnReanudar.setBackground(new Color(166, 166, 166));
+		btnReanudar.setBorder(new LineBorder(Color.BLACK, 2, true));
 		btnReanudar.addActionListener(this);
 		btnReanudar.setActionCommand("REANUDAR");
 		
 		btnTerminar = new JButton("Terminar");
+		btnTerminar.setBackground(new Color(166, 166, 166));
+		btnTerminar.setBorder(new LineBorder(Color.BLACK, 2, true));
 		btnTerminar.addActionListener(this);
 		btnTerminar.setActionCommand("TERMINAR");
 		
 		
 
 		fldFecha = new JTextField("dd/MM/yyyy");
+		fldFecha.setBorder(new LineBorder(Color.BLACK, 2, true));
 		fldHoraI = new JTextField("HH:mm:ss");
+		fldHoraI.setBorder(new LineBorder(Color.BLACK, 2, true));
 		fldHoraF = new JTextField("HH:mm:ss");
+		fldHoraF.setBorder(new LineBorder(Color.BLACK, 2, true));
 		
 		
 		btnRegistrar = new JButton("Registrar Actividad");
+		btnRegistrar.setBackground(new Color(59, 56, 56));
+		btnRegistrar.setForeground(Color.WHITE);
+		btnRegistrar.setFont(new Font("Calibri", Font.BOLD, 20));
+		btnRegistrar.setBorder(new LineBorder(Color.WHITE, 2, true));
 		btnRegistrar.addActionListener(this);
 		btnRegistrar.setActionCommand("REGISTRAR");
 		
 
-		PanelRegInfoD.setLayout(new GridLayout(2,1));
+		GridLayout layout6 = new GridLayout(2,1);
+	    layout6.setHgap(15);
+	    layout6.setVgap(15);
+		PanelRegInfoD.setLayout(layout6);
 		PanelRegInfoD.add(PanelTipos);
 		PanelRegInfoD.add(PanelCrono);
 	}
@@ -229,7 +292,11 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 			
 			PanelCrono.remove(PanelBtnCrono);
 	    	PanelRegCrono = new JPanel();
-	    	PanelRegCrono.setLayout(new GridLayout(1,2));
+	    	PanelRegCrono.setBackground(new Color(203, 203, 203));
+	    	GridLayout layout4 = new GridLayout(1,2);
+		    layout4.setHgap(15);
+		    layout4.setVgap(15);
+	    	PanelRegCrono.setLayout(layout4);
 			PanelRegCrono.add(btnPausa);
 			PanelRegCrono.add(btnTerminar);
 			PanelCrono.add(PanelRegCrono);
@@ -241,10 +308,11 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 
 			PanelCrono.remove(PanelBtnCrono);
 	    	PanelRegCrono = new JPanel();
-	    	PanelRegCrono.setLayout(new GridLayout(3,3));
-	    	PanelRegCrono.add(new JLabel("Ingrese: "));
-	    	PanelRegCrono.add(new JLabel(""));
-	    	PanelRegCrono.add(new JLabel(""));
+	    	PanelRegCrono.setBackground(new Color(203, 203, 203));
+	    	GridLayout layout5 = new GridLayout(2,3);
+		    layout5.setHgap(15);
+		    layout5.setVgap(15);
+	    	PanelRegCrono.setLayout(layout5);
 
 	    	PanelRegCrono.add(fldFecha);
 	    	PanelRegCrono.add(fldHoraI);
@@ -303,6 +371,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	    	
 	    	PanelCrono.remove(PanelRegCrono);
 	    	PanelRegCrono = new JPanel();
+	    	PanelRegCrono.setBackground(new Color(203, 203, 203));
 	    	PanelRegCrono.setLayout(new GridLayout(1,1));
 			PanelRegCrono.add(btnReanudar);
 			PanelCrono.add(PanelRegCrono);
@@ -315,7 +384,11 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	    	
 	    	PanelCrono.remove(PanelRegCrono);
 	    	PanelRegCrono = new JPanel();
-	    	PanelRegCrono.setLayout(new GridLayout(1,2));
+	    	PanelRegCrono.setBackground(new Color(203, 203, 203));
+	    	GridLayout layout4 = new GridLayout(1,2);
+		    layout4.setHgap(15);
+		    layout4.setVgap(15);
+	    	PanelRegCrono.setLayout(layout4);
 	    	PanelRegCrono.add(btnPausa);
 			PanelRegCrono.add(btnTerminar);
 			PanelCrono.add(PanelRegCrono);
