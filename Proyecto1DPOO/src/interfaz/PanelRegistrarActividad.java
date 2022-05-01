@@ -80,7 +80,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 		actividad = new Actividad();
 		
 		
-	    setBorder( new TitledBorder( "Menú Principal" ) );
+	    setBorder( new TitledBorder( "Registrar Actividad" ) );
 	    setBackground(new Color(203, 203, 203));
 	    
 	    txtEncabezado = new JLabel("<html><div style='text-align: center;'>Para registrar la actividad correctamente, por favor llene todos los campos a continuación</div><html>");
@@ -287,7 +287,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	    
 	    if(comando.equals("CRONO_AUTO"))
 	    {
-	    	//CronometroActividad cronometro = proyecto.obpar(txtUsuario.getText()).darReporte().darCronometro();	
+	    	//CronometroActividad cronometro = proyecto.obpar(fldUsuario.getText()).darReporte().darCronometro();	
 	    	//cronometro.iniciarCronoActividad(actividad);
 			
 			PanelCrono.remove(PanelBtnCrono);
@@ -338,7 +338,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	    	}
 	    	else
 	    	{
-	    		//Participante participante = proyecto.obpar(txtUsuario.getText());	
+	    		//Participante participante = proyecto.obpar(fldUsuario.getText());	
 				//Reporte reporte = participante.darReporte();
 				//CronometroActividad cronometro = reporte.darCronometro();
 				
@@ -366,7 +366,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	    }
 	    else if(comando.equals("PAUSAR"))
 	    {
-	    	//CronometroActividad cronometro = proyecto.obpar(txtUsuario.getText()).darReporte().darCronometro();	
+	    	//CronometroActividad cronometro = proyecto.obpar(fldUsuario.getText()).darReporte().darCronometro();	
 	    	//cronometro.pausarCronoActividad();
 	    	
 	    	PanelCrono.remove(PanelRegCrono);
@@ -379,7 +379,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	    }
 	    else if(comando.equals("REANUDAR"))
 	    {
-	    	//CronometroActividad cronometro = proyecto.obpar(txtUsuario.getText()).darReporte().darCronometro();	
+	    	//CronometroActividad cronometro = proyecto.obpar(fldUsuario.getText()).darReporte().darCronometro();	
 	    	//cronometro.reanudarCronoActividad();
 	    	
 	    	PanelCrono.remove(PanelRegCrono);
@@ -396,7 +396,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 		}
 	    else if(comando.equals("TERMINAR"))
 	    {
-	    	//CronometroActividad cronometro = proyecto.obpar(txtUsuario.getText()).darReporte().darCronometro();	
+	    	//CronometroActividad cronometro = proyecto.obpar(fldUsuario.getText()).darReporte().darCronometro();	
 	    	//cronometro.terminarCronoActividad(actividad);
 	    	PanelCrono.remove(PanelRegCrono);
 
