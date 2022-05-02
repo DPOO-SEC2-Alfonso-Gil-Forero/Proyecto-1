@@ -75,4 +75,9 @@ public class Reporte
 	{
 		return cronometro;
 	}
+	
+	public List<Actividad> darActividades()
+	{
+		return actividades;
+	}
 }
