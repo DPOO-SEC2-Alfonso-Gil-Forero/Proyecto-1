@@ -306,7 +306,7 @@ public class ConsolaProyecto {
 		for (String a:tiposA) {
 			tiposAc.add(a);
 		}
-		proyecto= new Proyecto(nombre, descripcion, fechai, fechaf, duenio, tiposAc);
+		proyecto= new Proyecto(nombre, descripcion, fechai, fechaf, duenio, tiposAc,"");
 		try {
 			guardarInfo();
 		} catch (IOException e) {

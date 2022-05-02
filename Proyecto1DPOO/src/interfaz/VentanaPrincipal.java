@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.List;
 
 import javax.swing.JFrame;
 
@@ -16,7 +17,6 @@ public class VentanaPrincipal extends JFrame
     
 	
 	private Proyecto proyecto;
-	
 
     private PanelMenu panelMenu;
     private PanelCrearProyecto panelCrearProyecto;
@@ -59,9 +59,14 @@ public class VentanaPrincipal extends JFrame
     public void ejecutarCrearProyecto()
     {
     	panelCrearProyecto = new PanelCrearProyecto(this,proyecto);
+    	panelMenu.setPreferredSize(new Dimension(300,700));
         add(panelCrearProyecto, BorderLayout.CENTER);
     }
-    
+    public Proyecto CrearProyecto(String nombre, String descripcion, String fechai, String fechaf, String nombreDueno,List<String> tiposActividad, String mailDueno)
+    {
+    	this.proyecto=new Proyecto( nombre,  descripcion,  fechai,  fechaf,  nombreDueno, tiposActividad, mailDueno);
+    	return this.proyecto;
+    }
     
  
     
@@ -116,7 +121,6 @@ public class VentanaPrincipal extends JFrame
     	panelVisualizacionAltoNivel = new PanelVisualizacionAltoNivel(this,proyecto);
         add(panelVisualizacionAltoNivel, BorderLayout.CENTER);
     }
-    
     
     
 
@@ -177,7 +181,6 @@ public class VentanaPrincipal extends JFrame
     {
     	this.remove(panelVisualizacionAltoNivel);
     }
-    
     
     
     

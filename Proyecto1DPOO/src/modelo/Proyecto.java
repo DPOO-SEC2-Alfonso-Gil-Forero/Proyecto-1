@@ -23,12 +23,14 @@ public class Proyecto
 	
 	private DetallesProyecto detalles;
 	
+	
 
 	//Constructor
-	public Proyecto(String nombre, String descripcion, String fechai, String fechaf, String nombreDueno,List<String> tiposActividad ){
+	public Proyecto(String nombre, String descripcion, String fechai, String fechaf, String nombreDueno,List<String> tiposActividad, String mailDueno ){
 		this.detalles=new DetallesProyecto(nombre, descripcion, fechai, fechaf, tiposActividad, nombreDueno);
 		this.participantes = new HashMap<String,Participante>();
 		this.actividades = new ArrayList<Actividad>();
+		addPart(nombreDueno, new Participante(nombreDueno,mailDueno,"Dueño" ));
 		
 	}
 	//Métodos

@@ -79,7 +79,11 @@ public class DetallesProyecto
 		if(file.createNewFile()) {
 		System.out.println("File created: " + file.getName());
 		BufferedWriter writer = new BufferedWriter(new FileWriter(nombrear));
-		writer.write(message);
+		writer.write(nombre +"\n");
+		writer.write(descripcion+"\n");
+		writer.write(fechaI+"\n");
+		writer.write(fechaF+"\n");
+		writer.write(tiposActividad.toString()+"\n");
 		writer.close();}
 		else{
 			System.out.println("File already exists.");
