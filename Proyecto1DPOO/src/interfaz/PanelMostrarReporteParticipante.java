@@ -164,16 +164,13 @@ public class PanelMostrarReporteParticipante extends JPanel implements ActionLis
     	txtTProm = new JLabel("Tiempo promedio por tipo: ");
     	txtTDia = new JLabel("Tiempo por día: ");
     	
-    	//String.valueOf(reporte.darCronometro().darTiempoTotal())+" ms"
-    	txtTTotalO = new JLabel("Reemplazar");
+    	
+    	txtTTotalO = new JLabel(String.valueOf(reporte.darCronometro().darTiempoTotal())+" ms");
     	txtTTotalO.setBorder(new LineBorder(Color.BLACK, 2, true));
     	
     	
-    	// Map<String, List<Long>> tiempoProm = reporte.darCronometro().darTiempoProm()
-    	Map<String, List<Long>> tiempoProm = new  HashMap<String, List<Long>>();
-    	tiempoProm.put("llave 1", Arrays.asList(4L, 2L));
-    	tiempoProm.put("llave 2", Arrays.asList(24L, 17L));
-    	tiempoProm.put("llave 3", Arrays.asList(100L, 3L, 0L));
+    	Map<String, List<Long>> tiempoProm = reporte.darCronometro().darTiempoProm();
+    	
     	
     	JPanel PanelPromTipo = new JPanel();
     	JScrollPane scrollFrame1 = new JScrollPane(PanelPromTipo);
@@ -204,11 +201,7 @@ public class PanelMostrarReporteParticipante extends JPanel implements ActionLis
 		}
     	
     	
-		// Map<String, Long> tiempoPorDia = reporte.darCronometro().darTiempoPorDia()
-		Map<String, Long> tiempoPorDia = new  HashMap<String, Long>();
-		tiempoPorDia.put("llave 1", 24L);
-		tiempoPorDia.put("llave 2", 36L);
-		tiempoPorDia.put("llave 3", 48L);
+		Map<String, Long> tiempoPorDia = reporte.darCronometro().darTiempoPorDia();
 		
     	
     	JPanel PanelPorDia = new JPanel();
@@ -248,27 +241,8 @@ public class PanelMostrarReporteParticipante extends JPanel implements ActionLis
 		PanelLReportes.setBackground(new Color(203, 203, 203));
 	    PanelLReportes.setPreferredSize(new Dimension(700,450));
 		
-	    //List<Actividad> listaAct = reporte.darActividades();
-	   
-	    
-	    Actividad actividad0 = new Actividad();
-	    actividad0.guardarInfoActividad("Título Act 1", "Esta es una descripción de pruebaEsta es una descripción de pruebaEsta es una descripción de pruebaEsta es una descripción de pruebaEsta es una descripción de prueba", "Tipo 1", "Santiago");
-	    actividad0.agregarFechaHoraI("01/05/2022", "11:30");
-	    actividad0.agregarHoraF("12:00");
-	    Actividad actividad1 = new Actividad();
-	    actividad1.guardarInfoActividad("Título Act 2", "Esta es una descripción de prueba", "Tipo 2", "Sergio");
-	    actividad1.agregarFechaHoraI("16/02/2022", "09:30");
-	    actividad1.agregarHoraF("10:00");
-	    Actividad actividad2 = new Actividad();
-	    actividad2.guardarInfoActividad("Título Act 3", "Esta es una descripción de prueba", "Tipo 3", "María");
-	    actividad2.agregarFechaHoraI("24/12/2022", "06:00");
-	    actividad2.agregarHoraF("08:00");
-	    List<Actividad> listaAct = new ArrayList<Actividad>();
-	    listaAct.add(actividad0);
-	    listaAct.add(actividad1);
-	    listaAct.add(actividad2);
-	    
-	    
+	    List<Actividad> listaAct = reporte.darActividades();
+	 
 	    Actividad actividad = listaAct.get(Pagina);
 		   
 	    
@@ -399,7 +373,7 @@ public class PanelMostrarReporteParticipante extends JPanel implements ActionLis
 	    
 	    if(comando.equals("BUSCAR"))
 	    {
-	    	//reporte = proyecto.obpar(fldUsuario.getText()).darReporte();
+	    	reporte = proyecto.obpar(fldUsuario.getText()).darReporte();
 	    	remove(PanelReporte);
 	    	PanelReporte = new JPanel();
 		    crearPanelReporte();
