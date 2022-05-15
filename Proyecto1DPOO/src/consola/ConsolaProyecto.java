@@ -203,7 +203,9 @@ public class ConsolaProyecto {
 					}
 					else if (opcionCrono2.equals("b"))
 					{
-						cronometro.terminarCronoActividad(actividad);
+
+						String llave2 = actividad.darDetalles().darTipo();
+						cronometro.terminarCronoActividad(actividad, llave2);
 						System.out.println("\nCronómetro terminado\n");
 						cont3 = false;
 					}

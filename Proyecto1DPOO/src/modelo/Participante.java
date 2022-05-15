@@ -66,7 +66,6 @@ public class Participante
 		this.nombre = elNombre;
 		this.correo = elCorreo;
 		this.tipo = elTipo;
-		GuardarParticipante(elNombre, participante)
 
 	}
 	public String mostrarDatosParticipante()

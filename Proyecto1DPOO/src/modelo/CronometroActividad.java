@@ -73,12 +73,12 @@ public class CronometroActividad
 	}
 	
 	
-	public void  terminarCronoActividad(Actividad actividad)
+	public void  terminarCronoActividad(Actividad actividad, String tipo)
 	{
 		momento2 = Calendar.getInstance().getTime();
 		actividad.agregarHoraF(horaFormato.format(momento2));
 		acarreo += Calendar.getInstance().getTime().getTime() - momento1.getTime();
-		actualizarTiempo(actividad);
+		actualizarTiempo(actividad, tipo);
 		
 	}
 	
@@ -89,13 +89,14 @@ public class CronometroActividad
 		momento1 = fechaHoraFormato.parse(fecha+"-"+horaI);
 		momento2 = fechaHoraFormato.parse(fecha+"-"+horaF);
 		acarreo = momento2.getTime() - momento1.getTime();
-		actualizarTiempo(actividad);
+		String llave2 = actividad.darDetalles().darTipo();
+		actualizarTiempo(actividad, llave2);
 	}
 
 	
 	
 	
-	public void actualizarTiempo(Actividad actividad)
+	public void actualizarTiempo(Actividad actividad,String llave2)
 	{
 		tiempoTotal += acarreo;
 		String llave1 = fechaFormato.format(momento1);
@@ -108,7 +109,6 @@ public class CronometroActividad
 		{
 			tiempoPorDia.put(llave1, acarreo);
 		}
-		String llave2 = actividad.darDetalles().darTipo();
 		if (tiempoProm.containsKey(llave2))
 		{
 			List<Long> lista = tiempoProm.get(llave2);

@@ -48,14 +48,15 @@ public class PanelVisualizacionAltoNivel extends JPanel implements ActionListene
 		principal = Pprincipal;
 		proyecto = Pproyecto;
 		participantes = proyecto.darParticipantes();
+		fechaFormato = new SimpleDateFormat("dd/MM/yyyy");
+
 		try {
 			tiempoPorDia();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		fechaFormato = new SimpleDateFormat("dd/MM/yyyy");
-
+		
 		setSize(1000, 750);
 		
 		setBorder( new TitledBorder( "Panel visualización de alto nivel" ) );

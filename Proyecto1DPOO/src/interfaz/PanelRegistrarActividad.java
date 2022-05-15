@@ -391,7 +391,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	    else if(comando.equals("TERMINAR"))
 	    {
 	    	CronometroActividad cronometro = proyecto.obpar(fldUsuario.getText()).darReporte().darCronometro();	
-	    	cronometro.terminarCronoActividad(actividad);
+	    	cronometro.terminarCronoActividad(actividad, tipo);
 	    	PanelCrono.remove(PanelRegCrono);
 
 	    	PanelCrono.add(new JLabel("Se registró correctamente el tiempo"));

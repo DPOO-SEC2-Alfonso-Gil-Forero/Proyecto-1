@@ -50,7 +50,6 @@ public class PanelAgregarParticipante extends JPanel implements ActionListener
 	{
 		principal = Pprincipal;
 		proyecto = Pproyecto;
-		participante = new Participante(fldNombre.getText(), fldCorreo.getText(), fldTipo.getText());
 		setBackground(new Color(203, 203, 203));
 		setBorder( new TitledBorder( "Registrar parcipante" ) );
 		
@@ -134,9 +133,12 @@ public class PanelAgregarParticipante extends JPanel implements ActionListener
 	    	}
 			else
 			{
-				Participante.GuardarParticipante(nombre, participante);
+				participante = new Participante(fldNombre.getText(), fldCorreo.getText(), fldTipo.getText());
+				proyecto.addPart(nombre, participante);
 			}		
+			this.setVisible(false);
 			principal.ejecutarMostrarMenu();
+			principal.borrarAgregarParticipante();
 		}
 			
 	}

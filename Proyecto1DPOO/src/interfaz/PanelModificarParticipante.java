@@ -51,7 +51,6 @@ public class PanelModificarParticipante extends JPanel implements ActionListener
 	{
 		principal = Pprincipal;
 		proyecto = Pproyecto;
-		participante = new Participante(fldNombre.getText(), fldCorreo.getText(), fldTipo.getText());
 		setBackground(new Color(203, 203, 203));
 		setBorder( new TitledBorder( "Registrar parcipante" ) );
 		
@@ -127,10 +126,18 @@ public class PanelModificarParticipante extends JPanel implements ActionListener
 		String nombre = fldNombre.getText();
 		if(comando.equals("ACEPTAR"))
 		{
-			
-			Participante.ModificarDatos(nombre, participante);
-					
+			if(fldNombre.getText().isEmpty()|| fldCorreo.getText().isEmpty() || fldTipo.getText().isEmpty())
+	    	{
+	    		JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos");
+	    	}
+			else
+			{
+				participante = proyecto.obpar(nombre);	
+				participante.modificarDatos(fldNombre.getText(), fldCorreo.getText(), fldTipo.getText());
+			}	
+			this.setVisible(false);
 			principal.ejecutarMostrarMenu();
+			principal.borrarModificarParticipante();
 		}
 			
 	}
