@@ -29,6 +29,8 @@ public class PanelMenu extends JPanel implements ActionListener
 	private JButton btnRegistrarActividad;
 	private JButton btnMostrarReporteParticipante;
 	private JButton btnVisualizacionAltoNivel;
+	private JButton btnMostrarWBS;
+	private JButton btnMostrarResumen;
 	
 	
 	
@@ -39,7 +41,7 @@ public class PanelMenu extends JPanel implements ActionListener
 		proyecto = Pproyecto;
 		
 
-	    setLayout( new GridLayout( 9, 1 ) );
+	    setLayout( new GridLayout( 11, 1 ) );
 	    setBorder( new TitledBorder( "Menú Principal" ) );
 	    
 	    eligaOpcionTxt = new JLabel("Seleccione una opción: ");
@@ -53,6 +55,8 @@ public class PanelMenu extends JPanel implements ActionListener
 		btnRegistrarActividad = new JButton("Registrar actividad");
 		btnMostrarReporteParticipante = new JButton("Mostrar reporte de una actividad");
 		btnVisualizacionAltoNivel = new JButton("Visualización actividades por fecha");
+		btnMostrarWBS = new JButton("Mostrar WBS");
+		btnMostrarResumen = new JButton("Mostrar resumen");
 	    
 		
 	    btnCrearProyecto.addActionListener(this);
@@ -63,6 +67,8 @@ public class PanelMenu extends JPanel implements ActionListener
 		btnRegistrarActividad.addActionListener(this);
 		btnMostrarReporteParticipante.addActionListener(this);
 		btnVisualizacionAltoNivel.addActionListener(this);
+		btnMostrarWBS.addActionListener(this);
+		btnMostrarResumen.addActionListener(this);
 	    
 	    
 	    btnCrearProyecto.setActionCommand("CREAR_PROYECTO");
@@ -73,6 +79,8 @@ public class PanelMenu extends JPanel implements ActionListener
 		btnRegistrarActividad.setActionCommand("REGISTRAR_ACTIVIDAD");
 		btnMostrarReporteParticipante.setActionCommand("MOSTRAR_REPORTE_PARTICIPANTE");
 		btnVisualizacionAltoNivel.setActionCommand("VISUALIZAR_ALTO_NIVEL");
+		btnMostrarWBS.setActionCommand("MOSTRAR_WBS");
+		btnMostrarResumen.setActionCommand("MOSTRAR_RESUMEN");
 
 	    
 	    add(btnCrearProyecto);
@@ -83,6 +91,8 @@ public class PanelMenu extends JPanel implements ActionListener
 	    add(btnRegistrarActividad);
 	    add(btnMostrarReporteParticipante);
 	    add(btnVisualizacionAltoNivel);
+	    add(btnMostrarWBS);
+	    add(btnMostrarResumen);
     
 	}
 
@@ -140,7 +150,18 @@ public class PanelMenu extends JPanel implements ActionListener
 	    	principal.ejecutarVisualizacionAltoNivel();
 	    	principal.borrarMenu();
 	    }
-	    
+	    else if(comando.equals("MOSTRAR_WBS"))
+	    {
+	    	this.setVisible(false);
+	    	principal.ejecutarMostrarWBS();
+	    	principal.borrarMenu();
+	    }
+	    else if(comando.equals("MOSTRAR_RESUMEN"))
+	    {
+	    	this.setVisible(false);
+	    	principal.ejecutarMostrarResumen();
+	    	principal.borrarMenu();
+	    }
 	    
 		
 		

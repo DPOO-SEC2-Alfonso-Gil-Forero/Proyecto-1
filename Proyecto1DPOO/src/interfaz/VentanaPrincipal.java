@@ -27,6 +27,8 @@ public class VentanaPrincipal extends JFrame
     private PanelRegistrarActividad panelRegistrarActividad;
     private PanelMostrarReporteParticipante panelMostrarReporteParticipante;
     private PanelVisualizacionAltoNivel panelVisualizacionAltoNivel;
+    private PanelMostrarWBS panelMostrarWBS;
+    private PanelMostrarResumen panelMostrarResumen;
 
 	
     
@@ -122,6 +124,18 @@ public class VentanaPrincipal extends JFrame
         add(panelVisualizacionAltoNivel, BorderLayout.CENTER);
     }
     
+    public void ejecutarMostrarWBS()
+    {
+    	panelMostrarWBS = new PanelMostrarWBS(this,proyecto);
+        add(panelMostrarWBS, BorderLayout.CENTER);
+    }
+    
+    public void ejecutarMostrarResumen()
+    {
+    	panelMostrarResumen = new PanelMostrarResumen(this,proyecto);
+        add(panelMostrarResumen, BorderLayout.CENTER);
+    }
+    
     
 
     public void borrarMenu()
@@ -180,6 +194,19 @@ public class VentanaPrincipal extends JFrame
     public void borrarVisualizacionAltoNivel()
     {
     	this.remove(panelVisualizacionAltoNivel);
+    }
+   
+    
+    
+    public void borrarMostrarWBS()
+    {
+    	this.remove(panelMostrarWBS);
+    }   
+    
+    
+    public void borrarMostrarResumen()
+    {
+    	this.remove(panelMostrarResumen);
     }
     
     
