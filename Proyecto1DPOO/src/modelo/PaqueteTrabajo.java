@@ -89,7 +89,7 @@ public class PaqueteTrabajo
 				while(iterator.hasNext() && !existe) 
 				{
 					laTarea = paquetes.get((String) iterator.next()).darUnaTarea(nombreTarea);
-					if (!(laTarea.equals(null)))
+					if (laTarea != (null))
 					{
 						existe = true;
 					}
@@ -118,7 +118,7 @@ public class PaqueteTrabajo
 				while(iterator.hasNext() && !existe) 
 				{
 					elPaquete = paquetes.get((String) iterator.next()).darUnPaquete(nombrePaquete);
-					if (!(elPaquete.equals(null)))
+					if (elPaquete!=null)
 					{
 						existe = true;
 					}
