@@ -26,6 +26,7 @@ public class Proyecto
 	private WBS wbs;
 	
 	
+	
 
 	//Constructor
 	public Proyecto(String nombre, String descripcion, String fechai, String fechaf, String nombreDueno,List<String> tiposActividad, String mailDueno ){
