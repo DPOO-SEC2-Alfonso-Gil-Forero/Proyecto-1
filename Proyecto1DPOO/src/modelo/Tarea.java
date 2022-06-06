@@ -54,28 +54,7 @@ public class Tarea
 		actividades.put(nombreActividad, laActividad);
 	}
 	
-	public void definirAportesEquipo()
-	{
-		
-	}
 	
-	
-	public void clasificarTareas()
-	{
-		
-	}
-	
-	
-	public void guardarInfoTareas()
-	{
-		
-	}
-	
-	
-	public void mostrarAportePorParticipante()
-	{
-		
-	}
 
 
 	public String darNombre() 
