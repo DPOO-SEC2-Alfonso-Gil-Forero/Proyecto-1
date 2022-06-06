@@ -44,10 +44,12 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	private JLabel txtUsuario;
 	private JLabel txtTitulo;
 	private JLabel txtDescripcion;
+	private JLabel txtTarea;
 	
 	private JTextField fldUsuario;
 	private JTextField fldTitulo;
 	private JTextField fldDescripcion;
+	private JTextField fldTarea;
 	
 	//Panel Derecho
 	private JPanel PanelTipos;
@@ -128,6 +130,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 		txtUsuario = new JLabel("Ingrese su usuario o el de aquel que hizo la actividad: ");
 	    txtTitulo = new JLabel("Ingrese el título de la actividad: ");
 		txtDescripcion = new JLabel("Ingrese una breve descripción: ");
+		txtTarea = new JLabel("Ingrese la tarea de la que hace parte la actividad: ");
 		
 		fldUsuario = new JTextField();
 		fldUsuario.setBorder(new LineBorder(Color.BLACK, 2, true));
@@ -135,14 +138,18 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 		fldTitulo.setBorder(new LineBorder(Color.BLACK, 2, true));
 		fldDescripcion = new JTextField();
 		fldDescripcion.setBorder(new LineBorder(Color.BLACK, 2, true));
+		fldTarea = new JTextField();
+		fldTarea.setBorder(new LineBorder(Color.BLACK, 2, true));
 
-		PanelRegInfoI.setLayout(new GridLayout(6,1));
+		PanelRegInfoI.setLayout(new GridLayout(8,1));
 		PanelRegInfoI.add(txtUsuario);
 		PanelRegInfoI.add(fldUsuario);
 		PanelRegInfoI.add(txtTitulo);
 		PanelRegInfoI.add(fldTitulo);
 		PanelRegInfoI.add(txtDescripcion);
 		PanelRegInfoI.add(fldDescripcion);
+		PanelRegInfoI.add(txtTarea);
+		PanelRegInfoI.add(fldTarea);
 	}
 	
 	
@@ -163,7 +170,6 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 		
 		
 
-		PanelRegInfoI.setLayout(new GridLayout(6,1));
 		GridLayout layout2 = new GridLayout(((lista.size()+3)/2),2);
 	    layout2.setHgap(15);
 	    layout2.setVgap(15);
@@ -326,7 +332,7 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 	    }
 	    else if(comando.equals("REGISTRAR"))
 	    {
-	    	if (fldTitulo.getText().isEmpty()|| fldDescripcion.getText().isEmpty() || fldUsuario.getText().isEmpty()|| tipo == "")
+	    	if (fldTitulo.getText().isEmpty()|| fldDescripcion.getText().isEmpty() || fldUsuario.getText().isEmpty() || tipo == "")
 	    	{
 	    		JOptionPane.showMessageDialog(null, "Rellene todos los campos");
 	    	}
@@ -336,8 +342,23 @@ public class PanelRegistrarActividad extends JPanel implements ActionListener
 				Reporte reporte = participante.darReporte();
 				CronometroActividad cronometro = reporte.darCronometro();
 				
-		    	actividad.guardarInfoActividad(fldTitulo.getText(), fldDescripcion.getText(), tipo, fldUsuario.getText());
+				if (fldTarea.getText().isEmpty() || proyecto.darWBS().darRaiz().darUnaTarea(fldTarea.getText())==null)
+				{
+					JOptionPane.showMessageDialog(null, "No se pudo relacionar la actividad a la tarea que ingresó.");
+					actividad.guardarInfoActividad(fldTitulo.getText(), fldDescripcion.getText(), tipo, fldUsuario.getText(), "No definido");
+				}
+				else 
+				{
+					actividad.guardarInfoActividad(fldTitulo.getText(), fldDescripcion.getText(), tipo, fldUsuario.getText(), fldTarea.getText());	
+					proyecto.darWBS().darRaiz().darUnaTarea(fldTarea.getText()).agregarActividad(fldTitulo.getText(), actividad);
+					if (JOptionPane.showConfirmDialog(null, "¿Con esta actividad terminó la tarea?", "Atención", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
+					{
+					    proyecto.darWBS().darRaiz().darUnaTarea(fldTarea.getText()).finalizarTarea();
+					} 
+					
+			    }
 		    	
+		   
 			    if (ManualCrono) 
 			    {
 			    	actividad.agregarFechaHoraI(fldFecha.getText(), fldHoraI.getText());

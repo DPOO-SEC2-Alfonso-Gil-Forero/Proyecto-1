@@ -264,12 +264,14 @@ public class PanelMostrarReporteParticipante extends JPanel implements ActionLis
 		
 		PanelInfoI1 = new JPanel();
 		PanelInfoI1.setBackground(new Color(203, 203, 203));
-		GridLayout layout5 = new GridLayout(2,2);
+		GridLayout layout5 = new GridLayout(3,2);
 	    layout5.setHgap(5);
 	    layout5.setVgap(5);
 		PanelInfoI1.setLayout(layout5);
 		PanelInfoI1.add(new JLabel("Título: "));
 		PanelInfoI1.add(new JLabel(actividad.darDetalles().darTitulo()));
+		PanelInfoI1.add(new JLabel("Tarea: "));
+		PanelInfoI1.add(new JLabel(actividad.darDetalles().darTarea()));
 		PanelInfoI1.add(new JLabel("Descripcion: "));
 		PanelInfoI1.add(new JLabel(""));
 		

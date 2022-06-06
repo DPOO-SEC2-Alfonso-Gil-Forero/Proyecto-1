@@ -24,9 +24,9 @@ public class Actividad
 		return detalles;
 	}
 	
-	public void guardarInfoActividad(String titulo, String descripcion, String tipo, String participante)
+	public void guardarInfoActividad(String titulo, String descripcion, String tipo, String participante, String tarea)
 	{
-		detalles.guardarInfoActividad(titulo, descripcion, tipo, participante);
+		detalles.guardarInfoActividad(titulo, descripcion, tipo, participante, tarea);
 	}
 	
 	public void agregarFechaHoraI(String fecha, String horaI)

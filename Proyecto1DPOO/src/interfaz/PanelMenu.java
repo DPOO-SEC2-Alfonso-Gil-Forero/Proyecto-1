@@ -55,7 +55,7 @@ public class PanelMenu extends JPanel implements ActionListener
 		btnRegistrarActividad = new JButton("Registrar actividad");
 		btnMostrarReporteParticipante = new JButton("Mostrar reporte de una actividad");
 		btnVisualizacionAltoNivel = new JButton("Visualización actividades por fecha");
-		btnMostrarWBS = new JButton("Mostrar WBS");
+		btnMostrarWBS = new JButton("WBS");
 		btnMostrarResumen = new JButton("Mostrar resumen");
 	    
 		

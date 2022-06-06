@@ -21,6 +21,8 @@ public class DetallesActividad
 	private String horaF;
 	
 	private String participante;
+	
+	private String tarea;
 
 
 	//Constructor
@@ -32,7 +34,7 @@ public class DetallesActividad
 	//Métodos
 	
 	
-	public void guardarInfoActividad(String Ptitulo, String Pdescripcion, String Ptipo, String Pparticipante)
+	public void guardarInfoActividad(String Ptitulo, String Pdescripcion, String Ptipo, String Pparticipante, String Ptarea)
 	{
 		titulo = Ptitulo;
 		
@@ -41,6 +43,8 @@ public class DetallesActividad
 		tipo = Ptipo;
 		
 		participante = Pparticipante;
+		
+		tarea = Ptarea;
 	}
 
 
@@ -98,5 +102,11 @@ public class DetallesActividad
 	public String darParticipante() 
 	{
 		return participante;
+	}
+
+	
+	public String darTarea() 
+	{
+		return tarea;
 	}
 }

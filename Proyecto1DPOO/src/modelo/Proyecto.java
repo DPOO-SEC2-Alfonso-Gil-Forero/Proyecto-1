@@ -23,6 +23,8 @@ public class Proyecto
 	
 	private DetallesProyecto detalles;
 	
+	private WBS wbs;
+	
 	
 
 	//Constructor
@@ -31,6 +33,7 @@ public class Proyecto
 		this.participantes = new HashMap<String,Participante>();
 		this.actividades = new ArrayList<Actividad>();
 		addPart(nombreDueno, new Participante(nombreDueno,mailDueno,"Dueño" ));
+		wbs = new WBS();
 		
 	}
 	//Métodos
@@ -80,6 +83,11 @@ public class Proyecto
 	}
 	public DetallesProyecto getDetalles() {
 		return detalles;
+	}
+	
+	public WBS darWBS() 
+	{
+		return wbs;
 	}
 	
 }

@@ -182,7 +182,7 @@ public class ConsolaProyecto {
 				System.out.println("\nTipo no valido");
 			}
 		}
-		actividad.guardarInfoActividad(titulo, descripcion, tipo, participanteNombre);
+		actividad.guardarInfoActividad(titulo, descripcion, tipo, participanteNombre,"");
 		System.out.println("\nDesea empezar a cronómetrar la actividad o esta ya fue terminada previamente:\n");
 		boolean cont2 = true;
 	    while (cont2)
